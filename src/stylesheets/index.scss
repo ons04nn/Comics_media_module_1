@@ -1,4 +1,4 @@
-/* Глобальный reset box-sizing */
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -73,7 +73,7 @@ header {
 }
 
 .has-submenu .submenu li {
-  white-space: nowrap; /* Запрещает перенос текста */
+  white-space: nowrap; 
 }
 
 
@@ -104,7 +104,7 @@ header {
  align-items: center;
   flex-direction: column;
 }
-/* Карточки */
+
 .cards-section {
   width: 100%;
   display: flex;
@@ -178,9 +178,9 @@ header {
 
 
 .card img {
-  width: 100%;      /* подстраивается под ширину родителя */
-  height: auto;     /* сохраняет пропорции */
-  max-width: 100%;  /* не выходит за пределы карточки */
+  width: 100%;      
+  height: auto;    
+  max-width: 100%;  
   display: block;
 }
 
@@ -191,7 +191,7 @@ header {
 }
 
 
-/* Заголовки и текст */
+
 h1 {
   margin: 0;
   font-size: 50px;
@@ -220,7 +220,7 @@ p {
   font-weight: 700;
 }
 
-/* Футер */
+
 footer {
   width: 100vw;
   background-color: #D51A21;
@@ -267,7 +267,7 @@ footer {
   align-items: center;
 }
 
-/* Сетка для about */
+
 .about_grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -310,7 +310,7 @@ footer {
   text-align: right;
 }
 
-/* Красный блок */
+
 .red-block {
   width: 100%;
   background-color: #D51A21;
@@ -354,7 +354,6 @@ footer {
   font-size: 50px;
 }
 
-/* Форма */
 form {
   display: flex;
   flex-direction: column;
@@ -400,29 +399,29 @@ form button:hover {
 .has-submenu {
   position: relative;
   cursor: pointer;
-  padding-right: 20px; /* чтобы стрелка не налезала на текст */
+  padding-right: 20px; 
 }
 
 .has-submenu::after {
   content: '';
   display: inline-block;
-  width: 10px;   /* ширина стрелки */
-  height: 10px;  /* высота стрелки */
-  background-image: url('../images/icons/arrow.svg'); /* путь к svg */
+  width: 10px;   
+  height: 10px; 
+  background-image: url('../images/icons/arrow.svg'); 
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
-  right: 0;      /* прижать к правому краю */
+  right: 0;     
   top: 50%;
   transform: translateY(-50%);
 }
 
 
-/* --- Адаптив --- */
+
 @media (max-width: 1200px) {
 
    .card_block {
-    flex-direction: column; /* в колонку */
+    flex-direction: column; 
     justify-content: flex-start;
     
   }
@@ -560,7 +559,7 @@ form button:hover {
 
     
      .in_card_text {
-    gap: 10px; /* уменьшаем расстояние между элементами */
+    gap: 10px; 
   }
 
   .undertext {
@@ -568,7 +567,7 @@ form button:hover {
   }
 
    .card_block {
-    flex-direction: column; /* в колонку */
+    flex-direction: column; 
     justify-content: flex-start;
   }
 
