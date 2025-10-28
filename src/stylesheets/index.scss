@@ -99,6 +99,11 @@ header {
   transition: 0.3s;
 }
 
+.centered {
+  display: flex;
+ align-items: center;
+  flex-direction: column;
+}
 /* Карточки */
 .cards-section {
   width: 100%;
