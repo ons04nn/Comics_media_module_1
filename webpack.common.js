@@ -6,41 +6,11 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path')
 
-const fs = require('fs'); // импорт fs
-
-// функция для рекурсивного поиска всех HTML в src
-function getHtmlPages(dir) {
-  const entries = [];
-  const items = fs.readdirSync(dir, { withFileTypes: true });
-  items.forEach(item => {
-    const fullPath = path.join(dir, item.name);
-    if (item.isDirectory()) {
-      entries.push(...getHtmlPages(fullPath));
-    } else if (item.name.endsWith('.html')) {
-      entries.push(fullPath);
-    }
-  });
-  return entries;
-}
-
-// список всех HTML-файлов
-const htmlFiles = getHtmlPages(path.resolve(__dirname, 'src'));
-
-// создаём массив HtmlWebpackPlugin
-const htmlPlugins = htmlFiles.map(filePath => {
-  const filename = path.relative(path.resolve(__dirname, 'src'), filePath);
-  return new HtmlWebpackPlugin({
-    template: filePath,
-    filename
-  });
-});
-
-
-
-
 module.exports = {
   entry: {
-    index: './src/index.js'
+    index: './src/index.js',
+    usereact: './src/javascript/usereact.jsx'
+
   },
   output: {
     filename: '[name].js',
@@ -101,22 +71,68 @@ module.exports = {
     ]
   },
   plugins: [
-  new MiniCssExtractPlugin({
-    filename: '[name].css',
-    chunkFilename: '[id].css'
-  }),
 
-  ...htmlPlugins,  // ✅ все HTML автоматически
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
 
-  new HtmlWebpackPartialsPlugin([
-    {
-      path: path.join(__dirname, './src/partials/analytics.html'),
-      location: 'analytics',
-      template_filename: '*',
-      priority: 'replace'
-    }
-  ])
-],
+    // Landing page
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+      chunks: ['index']
+    }),
+
+     new HtmlWebpackPlugin({
+      template: './src/404.html',
+      filename: './404.html',
+      chunks: ['index']
+    }),
+
+    new HtmlWebpackPlugin({
+      template: './src/zolotoi_vek.html',
+      filename: './zolotoi_vek.html',
+      chunks: ['index']
+    }),
+
+     new HtmlWebpackPlugin({
+      template: './src/o_nas.html',
+      filename: './o_nas.html',
+      chunks: ['index']
+    }),
+
+      new HtmlWebpackPlugin({
+      template: './src/styleguide.html',
+      filename: './styleguide.html',
+      chunks: ['index']
+    }),
+
+     new HtmlWebpackPlugin({
+      template: './src/articles.html',
+      filename: './articles.html',
+      chunks: ['index']
+    }),
+
+     new HtmlWebpackPlugin({
+      template: './src/usereact.html',
+      filename: './usereact.html',
+      chunks: ['index', 'usereact']
+    }),
+
+
+
+
+    // Partials
+    new HtmlWebpackPartialsPlugin([
+      {
+        path: path.join(__dirname, './src/partials/analytics.html'),
+        location: 'analytics',
+        template_filename: '*',
+        priority: 'replace'
+      }
+    ])
+  ],
   optimization: {
     minimizer: [new CssMinimizerPlugin()]
   }
