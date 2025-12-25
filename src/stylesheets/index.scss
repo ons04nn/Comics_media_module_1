@@ -15,8 +15,9 @@ body {
 }
 
 main {
-  width: 1920px;
-    margin: 0 auto;
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 header {
@@ -67,14 +68,18 @@ header {
   cursor: pointer;
 }
 
-.card::before {
-    content: attr(data-author);
-    position: block;      
-    background: rgba(0,0,0); 
-    color: #fff;
-    padding: 2px 6px;
-    font-size: 14px;
+    .card::before {
+  content: attr(data-author);
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 14px;
+  z-index: 5;
 }
+
 
 .card img {
   display: block;
@@ -151,9 +156,11 @@ p {
   margin-bottom:55px;
 }
 
-.cards{
-  width: 1680px;
-    margin: 0 auto;
+.cards,
+.proizvodstvo {
+  max-width: 1680px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 h1 {
@@ -205,10 +212,6 @@ font-weight: 600;
     z-index: 100;
 }
 
-.proizvodstvo{
-    width: 1680px;
-    margin: 0 auto;
-}
 
 .zolotoi_vek{
   background-color: #FFCD00;
@@ -384,26 +387,273 @@ font-weight: 600;
   opacity: 1;
 }
 
-@media (max-width: 1100px) {
-  .footer__grid {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 48px;
-  }
-}
 
-@media (max-width: 700px) {
+/* ==== MOBILE FIRST (до 768px) ==== */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 16px;
+  }
+
+  main {
+    padding: 0 16px 40px;
+  }
+
+  /* Шапка */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .header_ul {
+    width: 100%;
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .header_ul li {
+    font-size: 18px;
+  }
+
+  .header_ul li.center h1 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  /* Молния убираем / фиксируем */
+  .lightning {
+    display: none;
+  }
+
+  /* Карточки – в колонку */
+  .row {
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 24px;
+  }
+
+  .cards,
+  .proizvodstvo {
+    max-width: 100%;
+  }
+
+  .card,
+  .card--small,
+  .card--wide,
+  .card--std,
+  .card--big {
+    width: 100%;
+  }
+
+  .card-photo {
+    height: auto;
+  }
+
+  .card-photo-std {
+    height: auto;
+  }
+
+  .card-photo--big {
+    height: auto;
+  }
+
+  .article_title {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .column {
+    gap: 16px;
+  }
+
+  /* Блоки-секции */
+  .starter_block,
+  .zolotoi_vek,
+  .serebreniy_vek,
+  .bronzoviy_vek,
+  .Konkurs {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .Izdateli {
+    margin-bottom: 32px;
+  }
+
+  .title_row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  h1,
+  .h1 {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  h2,
+  .h2 {
+    font-size: 24px;
+    line-height: 26px;
+  }
+
+  h3,
+  .h3 {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .space_between {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .column_just {
+    gap: 16px;
+  }
+
+  .konkurs {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Издатели – логотипы сеткой */
+  .brand-logos {
+    flex: 1 1 calc(50% - 8px);
+  }
+
+  .cards .column > .row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .brand-logo {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Футер */
   .footer {
-    padding: 40px 24px;
+    padding: 32px 16px 40px;
   }
 
   .footer__grid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 24px;
+  }
+
+  .footer li {
+    margin-bottom: 8px;
+  }
+
+  .footer__brand .h2,
+  .footer__brand h2 {
+    font-size: 24px;
+  }
+
+  .footer__brand h1 {
+    font-size: 32px;
+    line-height: 32px;
+    margin-bottom: 16px;
+  }
+
+  .footer__socials {
+    margin-top: 4px;
   }
 }
 
+/* ==== ПЛАНШЕТ (768–1200px) ==== */
+@media (min-width: 769px) and (max-width: 1200px) {
 
-.brand-logos {
-  height: 231px;
-  width: 300px;
+  main {
+    padding: 0 24px 48px;
+  }
+
+  .header_ul {
+    width: 100%;
+    padding: 12px 24px;
+    gap: 16px;
+  }
+
+  .header_ul li {
+    font-size: 22px;
+  }
+
+  .header_ul li.center h1 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+
+  .cards,
+  .proizvodstvo {
+    max-width: 100%;
+  }
+
+  .row {
+    gap: 24px;
+  }
+
+  .card--small {
+    width: calc(50% - 12px);
+  }
+
+  .card--wide {
+    width: 100%;
+  }
+
+  .card--std {
+    width: calc(50% - 12px);
+  }
+
+  .card--big {
+    width: 100%;
+  }
+
+  .title_row {
+    gap: 12px;
+  }
+
+  h1,
+  .h1 {
+    font-size: 64px;
+    line-height: 64px;
+  }
+
+  h2,
+  .h2 {
+    font-size: 40px;
+  }
+
+  h3,
+  .h3 {
+    font-size: 28px;
+  }
+
+  .article_title {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .footer {
+    padding: 40px 32px;
+  }
+
+  .footer__grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    row-gap: 32px;
+  }
 }
